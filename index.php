@@ -1,50 +1,60 @@
 <?php
     include ("conexion.php");
-    $sql = "SELECT * FROM Empresas";
+    $sql = "SELECT * FROM empresas";
     $res = mysqli_query($con, $sql);
 ?>
 <html>
 <head>
     <title>Prueba</title>
+   
+    <style>
+    @font-face {
+font-family:"Play-Bold";
+src: url("fonts/Play-Bold.ttf");
+                }
+   
+   </style>
 </head>
 <body>
-    <h3 style="margin-left:50px">Registro de Empresas</h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;">Registro de Empresas</h3>
     <br>
     <form action="alta_empresa.php" method = "post" enctype="multipart/form-data">
-    <div style="margin-left:50px">
-        <label for="">Nombre de la empresa: </label>
-        <input type="text" name="usuario" id="usuario">
+    <div style="margin-left:50px; font-family: play-Bold;">
+        <label for="">NOMBRE DE LA EMPRESA:&nbsp;&nbsp;&nbsp; </label>
+        <input type="text" name="usuario" id="usuario" size="35">
     </div>
     <br>
-    <div style="margin-left:50px">
-        <label for="">Procedencia: &nbsp;&nbsp;&nbsp;</label>
-        <input type="radio" name="fisica" id="fisica" value = "1"> Fisica&nbsp;&nbsp;&nbsp;
-        <input type="radio" name="moral" id="moral" value = "2"> Moral
+    <div style="margin-left:50px; font-family: play-Bold;">
+        <label for="">TIPO DE EMPRESA: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="radio" name="mexicana" id="mexicana" value = "1"> MEXICANA&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="extranjera" id="extranjera" value = "2"> EXTRANJERA
     </div>
     <br>
-    <div style="margin-left:50px">
-        <label for="">Tipo de Empresa: </label>
-        <input type="radio" name="mexicana" id="mexicana" value = "1"> Mexicana
-        <input type="radio" name="extranjera" id="extranjera" value = "2"> Extranjera
+    <div style="margin-left:50px; font-family: play-Bold;">
+        <label for="">PROCEDENCIA: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="radio" name="fisica" id="fisica" value = "1"> FISICA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="moral" id="moral" value = "2"> MORAL
     </div>
     <br>
-    <div style="margin-left:50px">
-        <label for="">Actividades a Realizar: </label>
+    <div style="margin-left:50px; font-family: play-Bold;">
+        <label for="">RAZON&nbsp;&nbsp;&nbsp;SOCIAL:&nbsp;&nbsp;&nbsp; </label>
+        <input type="text" name="social" id="social" size="46">
+    </div>
+    <br>
+    <div style="margin-left:50px; font-family: play-Bold;">
+        <label for="">ACTIVIDADES A REALIZAR: </label>
         <br>
-        <textarea name="actividades" id="activadades" cols="30" rows="10"></textarea>
+        <textarea name="actividades" id="activadades" cols="67" rows="5"style="resize: both;"></textarea>
     </div>
     <br>
-    <div style="margin-left:50px">
-        <label for="">Razon Social: </label>
-        <input type="text" name="social" id="social">
+    <div style="margin-left:50px; font-family: play-Bold;">
+        <label for="">CONTACTO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <input type="text" name="contacto" id="contacto" size="49">
     </div>
     <br>
-    <div style="margin-left:50px">
-        <label for="">Contacto: </label>
-        <input type="text" name="contacto" id="contacto">
+    <div style="margin-left: 440px">
+    <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Guardar</button>
     </div>
-    <br>
-    <button type="submit">Guardar</button>
     </form>
     <br>
     <br>
