@@ -8,7 +8,7 @@
     <title>Prueba</title>
 </head>
 <body>
-    <h3>Registro de Empresas</h3>
+    <h3 style="margin-left:50px">Registro de Empresas</h3>
     <br>
     <form action="alta_empresa.php" method = "post" enctype="multipart/form-data">
     <div style="margin-left:50px">
@@ -78,7 +78,7 @@
                         $t = "Extranjera";
                     }?>
 			<tr>
-            <td><?php echo $f['usuario'];?></td>
+            <td><?php echo $f['company'];?></td>
 			<td><?php echo $p;?></td>
 			<td><?php echo $t;?></td>
             <td><?php echo $f['actividades'];?></td>
