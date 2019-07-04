@@ -1,7 +1,6 @@
 <?php
 	include ("conexion.php");
 		$usuario=$_POST['usuario'];
-		$password=$_POST['pass'];
         $act=$_POST['actividades'];
         $r_social = $_POST['social'];
         $contacto = $_POST['contacto'];
@@ -17,9 +16,8 @@
         if(isset($_POST['extranjera'])){
             $tipo= $_POST['extranjera'];
         }
-		$Sql="insert into Empresas (usuario,password,procedencia,tipo,actividades,razon_social,contacto) values(
+        $Sql="insert into Empresas (company,procedencia,tipo,actividades,razon_social,contacto) values(
 			'".$usuario."',
-            '".$password."',
             '".$procedencia."',
             '".$tipo."',
             '".$act."',
