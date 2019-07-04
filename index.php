@@ -11,40 +11,35 @@
     <h3>Registro de Empresas</h3>
     <br>
     <form action="alta_empresa.php" method = "post" enctype="multipart/form-data">
-    <div>
-        <label for="">Procedencia: </label>
-        <input type="radio" name="fisica" id="fisica" value = "1"> Fisica
+    <div style="margin-left:50px">
+        <label for="">Nombre de la empresa: </label>
+        <input type="text" name="usuario" id="usuario">
+    </div>
+    <br>
+    <div style="margin-left:50px">
+        <label for="">Procedencia: &nbsp;&nbsp;&nbsp;</label>
+        <input type="radio" name="fisica" id="fisica" value = "1"> Fisica&nbsp;&nbsp;&nbsp;
         <input type="radio" name="moral" id="moral" value = "2"> Moral
     </div>
     <br>
-    <div>
+    <div style="margin-left:50px">
         <label for="">Tipo de Empresa: </label>
         <input type="radio" name="mexicana" id="mexicana" value = "1"> Mexicana
         <input type="radio" name="extranjera" id="extranjera" value = "2"> Extranjera
     </div>
     <br>
-    <div>
-        <label for="">Usuario: </label>
-        <input type="text" name="usuario" id="usuario">
-    </div>
-    <br>
-    <div>
-        <label for="">Contraseña: </label>
-        <input type="password" name="pass" id="pass">
-    </div>
-    <br>
-    <div>
+    <div style="margin-left:50px">
         <label for="">Actividades a Realizar: </label>
         <br>
         <textarea name="actividades" id="activadades" cols="30" rows="10"></textarea>
     </div>
     <br>
-    <div>
+    <div style="margin-left:50px">
         <label for="">Razon Social: </label>
         <input type="text" name="social" id="social">
     </div>
     <br>
-    <div>
+    <div style="margin-left:50px">
         <label for="">Contacto: </label>
         <input type="text" name="contacto" id="contacto">
     </div>
