@@ -1,6 +1,6 @@
 <?php
     include ("conexion.php");
-    $sql = "SELECT * FROM empresas";
+    $sql = "SELECT * FROM Empresas";
     $res = mysqli_query($con, $sql);
 ?>
 <html>
@@ -9,10 +9,9 @@
    
     <style>
     @font-face {
-font-family:"Play-Bold";
-src: url("fonts/Play-Bold.ttf");
-                }
-   
+        font-family:"Play-Bold";
+        src: url("fonts/Play-Bold.ttf");
+    }
    </style>
 </head>
 <body>
@@ -92,8 +91,8 @@ src: url("fonts/Play-Bold.ttf");
 			<td><?php echo $p;?></td>
 			<td><?php echo $t;?></td>
             <td><?php echo $f['actividades'];?></td>
-            <td><?php echo $f['razon_social'];?>'</td>
-            <td><?php echo $f['contacto'];?>'</td>
+            <td><?php echo $f['razon_social'];?></td>
+            <td><?php echo $f['contacto'];?></td>
 		    </tr>
 			<?php }?>
             </tbody>
