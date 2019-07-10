@@ -1,9 +1,10 @@
 <?php
-	include ("conexion.php");
+    include ("conexion.php");
 		$usuario=$_POST['usuario'];
         $act=$_POST['actividades'];
         $r_social = $_POST['social'];
         $contacto = $_POST['contacto'];
+        $clave = rand();
         if(isset($_POST['fisica'])) {
             $procedencia = $_POST['fisica'];
         }
@@ -16,18 +17,20 @@
         if(isset($_POST['extranjera'])){
             $tipo= $_POST['extranjera'];
         }
-<<<<<<< Updated upstream
-        $Sql="insert into Empresas (company,procedencia,tipo,actividades,razon_social,contacto) values(
-=======
-
-		$Sql="insert into empresas (company,procedencia,tipo,actividades,razon_social,contacto) values(
->>>>>>> Stashed changes
+        $Sql="insert into Empresas (company,procedencia,tipo,actividades,razon_social,contacto,clave) values(
 			'".$usuario."',
             '".$procedencia."',
             '".$tipo."',
             '".$act."',
-			'".$r_social."',
-			'".$contacto."')";
+            '".$r_social."',
+            '".$contacto."',
+            '".$clave."')";
+            
         mysqli_query($con,$Sql);
-        header("Location: index.php")
+       // header("Location: empresas.php")
+?>
+<?php
+echo '<script>alert ("Empresa Registrada con exito \n Nombre empresa: '.$usuario.' \n Clave de Registro: '.$clave.'");
+window.location.href="empresas.php";
+</script>';
 ?>
