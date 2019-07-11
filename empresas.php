@@ -14,6 +14,7 @@
     }
     body{
         background-color:#336699;
+        margin-left:200px;
     }
    </style>
 </head>
@@ -26,7 +27,7 @@
     <form action="alta_empresa.php" method = "post" enctype="multipart/form-data">
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">NOMBRE DE LA EMPRESA:&nbsp;&nbsp;&nbsp; </label>
-        <input type="text" name="usuario" id="usuario" size="35">
+        <input type="text" name="usuario" id="usuario" style="width:250px">
     </div>
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
@@ -43,21 +44,26 @@
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">RAZON&nbsp;&nbsp;&nbsp;SOCIAL:&nbsp;&nbsp;&nbsp; </label>
-        <input type="text" name="social" id="social" size="46">
+        <input type="text" name="social" id="social" style="width:325px">
     </div>
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">ACTIVIDADES A REALIZAR: </label>
         <br>
-        <textarea name="actividades" id="activadades" cols="67" rows="5"style="resize: both;"></textarea>
+        <textarea name="actividades" id="activadades" cols="74" rows="5"style="resize: both;"></textarea>
     </div>
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
-        <label for="">CONTACTO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-        <input type="text" name="contacto" id="contacto" size="49">
+        <label for="">EMAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <input type="email" name="contacto" id="contacto" style="width:388px">
     </div>
     <br>
-    <div style="margin-left: 440px">
+    <div style="margin-left:50px; font-family: play-Bold;color:#fff">
+        <label for="">TELEFONO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <input type="number" name="telefono" id="telefono" style="width:354px">
+    </div>
+    <br>
+    <div style="margin-left: 419px">
     <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Guardar</button>
     </div>
     </form>
