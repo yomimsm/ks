@@ -4,6 +4,7 @@
         $act=$_POST['actividades'];
         $r_social = $_POST['social'];
         $contacto = $_POST['contacto'];
+        $telefono = $_POST['telefono'];
         $clave = rand();
         if(isset($_POST['fisica'])) {
             $procedencia = $_POST['fisica'];
@@ -17,13 +18,14 @@
         if(isset($_POST['extranjera'])){
             $tipo= $_POST['extranjera'];
         }
-        $Sql="insert into Empresas (company,procedencia,tipo,actividades,razon_social,contacto,clave) values(
+        $Sql="insert into Empresas (company,procedencia,tipo,actividades,razon_social,contacto,telefono,clave) values(
 			'".$usuario."',
             '".$procedencia."',
             '".$tipo."',
             '".$act."',
             '".$r_social."',
             '".$contacto."',
+            '".$telefono."',
             '".$clave."')";
             
         mysqli_query($con,$Sql);
