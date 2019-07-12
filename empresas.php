@@ -27,7 +27,7 @@
     <form action="alta_empresa.php" method = "post" enctype="multipart/form-data">
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">NOMBRE DE LA EMPRESA:&nbsp;&nbsp;&nbsp; </label>
-        <input type="text" name="usuario" id="usuario" style="width:250px">
+        <input type="text" name="usuario" id="usuario" style="width:250px" required>
     </div>
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
@@ -44,7 +44,7 @@
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">RAZON&nbsp;&nbsp;&nbsp;SOCIAL:&nbsp;&nbsp;&nbsp; </label>
-        <input type="text" name="social" id="social" style="width:325px">
+        <input type="text" name="social" id="social" style="width:325px" required>
     </div>
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
@@ -55,12 +55,12 @@
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">EMAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-        <input type="email" name="contacto" id="contacto" style="width:388px">
+        <input type="email" name="contacto" id="contacto" style="width:388px" required>
     </div>
     <br>
     <div style="margin-left:50px; font-family: play-Bold;color:#fff">
         <label for="">TELEFONO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-        <input type="number" name="telefono" id="telefono" style="width:354px">
+        <input type="number" name="telefono" id="telefono" style="width:354px" required>
     </div>
     <br>
     <div style="margin-left: 419px">
