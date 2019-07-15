@@ -16,6 +16,27 @@
         background-color:#336699;
         margin-left:200px;
     }
+    th{
+        color:white;
+        font-family:"Play-Bold";
+        font-size:14pt;
+        border-collapse: collapse;
+        border: 2px white solid;
+    }
+    td{
+        color:white;
+        font-family:"Play-Bold";
+        font-size:11pt;
+        border-collapse: collapse;
+        border: 2px white solid;
+        text-align:center;
+    }
+    table{
+        border-collapse: collapse;
+        border: 2px white solid;
+        margin-left:-100px;
+        margin-right:150px;
+    }
    </style>
 </head>
 <body>
@@ -30,11 +51,12 @@
             header("Location:login_registro.php");
         }
         include ("conexion.php");
-        $query="SELECT id FROM Empresas WHERE clave = {$_SESSION['password']}";
+        $query="SELECT id,company FROM Empresas WHERE clave = {$_SESSION['password']}";
         $res = mysqli_query($con, $query);
         while($rows=mysqli_fetch_array($res)){ 
             //echo "id: ".$rows[0]."<br>";
             $id = $rows[0];
+            $company = $rows[1];
         } 
         ?>
     <br>
@@ -79,6 +101,53 @@
     <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Guardar</button>
     </div>
     </form>
+    <br>
+    <br>
+    <?php
+        $sql1 = "SELECT * FROM Trabajadores WHERE id_empresa={$id}";
+        if($result = mysqli_query($con, $sql1)){
+            if(mysqli_num_rows($result) > 0){
+                echo "<table>";
+                    echo "<tr>";
+                        echo "<th>Nombre</th>";
+                        echo "<th>CURP</th>";
+                        echo "<th>Nº Seguro Social</th>";
+                        echo "<th>Mayor de Edad</th>";
+                        echo "<th>Carta Responsiva</th>";
+                    echo "</tr>";
+                while($row = mysqli_fetch_array($result)){
+                    echo "<tr>";
+                        echo "<td>" . $row['nombre'] . "</td>";
+                        echo "<td>" . $row['curp'] . "</td>";
+                        echo "<td>" . $row['seguro'] . "</td>";
+                        if($row['edad'] == 1){
+                            $edad = "SI";
+                            echo "<td>" . $edad . "</td>";  
+                        }else{
+                            $edad = "NO";
+                            echo "<td>" . $edad . "</td>";  
+                        } 
+                        if($row['carta']!= null){
+                            echo "<td>";
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['carta'] ).'"  alt="" style="width:25%"/>';
+                            echo"</td>";
+                        }else{
+                            $e = "No Aplica";
+                            echo "<td>".$e."</td>";
+                        }
+                    echo "</tr>";
+                }
+                echo "</table>";
+                // Close result set
+                mysqli_free_result($result);
+            } else{
+                echo "No records matching your query were found.";
+            }
+        } else{
+            echo "ERROR: Could not able to execute $sql1. " . mysqli_error($con);
+        }
+
+    ?>
 </body>
 </html>
 <script type="text/javascript">

@@ -3,12 +3,12 @@
         $nombre=$_POST['nombre'];
         $curp=$_POST['curp'];
         $seguro = $_POST['seguro'];
-       /*if(isset($_POST['carta_responsiva'])){
-           $carta = base_64_encode($_POST['carta_responsiva']); 
-        }else{
-            $carta = null;
-        }*/
-        $telefono = $_POST['telefono'];
+        $revisar = getimagesize($_FILES["carta_responsiva"]["tmp_name"]);
+        if($revisar !== false){
+            $image = $_FILES['carta_responsiva']['tmp_name'];
+            $imgContenido = addslashes(file_get_contents($image));
+        }
+            $telefono = $_POST['telefono'];
         //$clave = rand();
         if(isset($_POST['mayor'])) {
             $edad = $_POST['mayor'];
@@ -23,7 +23,7 @@
             '".$curp."',
             '".$seguro."',
             '".$edad."',
-            '".$carta."',
+            '".$imgContenido."',
             '".$empresa."',
             '".$telefono."')";
             
