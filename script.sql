@@ -25,3 +25,14 @@ CREATE TABLE `Trabajadores` (
   KEY `TRABAJADOR_EMPRESA_FK` (`id_empresa`),
   CONSTRAINT `TRABAJADOR_EMPRESA_FK` FOREIGN KEY (`id_empresa`) REFERENCES `Empresas` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Evaluaciones` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_empleado` int(11) unsigned NOT NULL,
+  `intentos` int(11) NULL,
+  `resultado` varchar(255) NOT NULL,
+  `bloqueo` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `EVALUACION_TRABAJADOR_FK` (`id_empleado`),
+  CONSTRAINT `EVALUACION_TRABAJADOR_FK` FOREIGN KEY (`id_empleado`) REFERENCES `Trabajadores` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

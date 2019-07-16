@@ -13,13 +13,6 @@
     }
    </style>
   </head>
-  <?php
-        session_start();
-        // Se comprueba si ya se habia iniciado la sesion y en ese caso le redirigimos a la pagina de inicio
-        if(isset($_SESSION['id'])){
-            header("Location:trabajadores.php");
-        }
-    ?>
   <body>
     <br>
     <br>
@@ -28,19 +21,19 @@
     <br>
     <div style="border: 2px white solid;margin-right:200px">
     <br>
-        <form action="ingresar.php" method="POST">
+        <form action="verificar.php" method="POST">
             <div style="margin-left:50px; font-family: play-Bold;color:#fff">
                 <label for="Email">Email de la empresa:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="email" name="txtusuario" id="txtusuario" style="width:250px" required>
+                <input type="email" name="usuario" id="usuario" style="width:250px" required>
             </div>
             <br>
             <div style="margin-left:50px; font-family: play-Bold;color:#fff">
                 <label for="contraseña" style="color:white;">Clave Asignada: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input type="password" name="txtpassword" id="txtpassword" style="width:283px" required>
+                <input type="password" name="password" id="password" style="width:283px" required>
             </div>
             <br>
             <div style="margin-left: 377px">
-                <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Guardar</button>
+                <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Ingresar</button>
             </div>
         </form>
     </div> 

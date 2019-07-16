@@ -18,13 +18,15 @@
         }
         $carta = null;
         $empresa = $_POST['empresa'];
-        $Sql="insert into Trabajadores (nombre,curp,seguro,edad,carta,id_empresa,tel) values(
+        $clave = $_POST['clave'];
+        $Sql="insert into Trabajadores (nombre,curp,seguro,edad,carta,id_empresa,clave,tel) values(
 			'".$nombre."',
             '".$curp."',
             '".$seguro."',
             '".$edad."',
             '".$imgContenido."',
             '".$empresa."',
+            '".$clave."',
             '".$telefono."')";
             
         mysqli_query($con,$Sql);
