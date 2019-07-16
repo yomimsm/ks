@@ -112,14 +112,14 @@ por consecuencia  termina en un accidente. </div>
   
     <div style="margin-left:50px; font-family: play-Bold;">
     
-       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Porque de forma voluntaria  deben cuidar el medio ambiente. 
-       </div>
+       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Porque de forma voluntaria  deben cudar el 
+medio ambiente. </div>
 
  
 
  &nbsp;&nbsp;&nbsp;
-        <div style="float: right;width: 600px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Por los impactos ambientales que pueden generar a causas de sus actividades.
-        </div>
+        <div style="float: right;width: 600px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Por los impactos ambientales que pueden generar 
+a causas de sus actividades.</div>
 
 
 
@@ -133,15 +133,13 @@ por consecuencia  termina en un accidente. </div>
   
     <div style="margin-left:50px; font-family: play-Bold;">
     
-       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Para conocer en que más se puede utilizar esa sustancia química.
-       </div>
+       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Para conocer en que más se puede utilizar esa sustancia química.</div>
 
 
  
 
  &nbsp;&nbsp;&nbsp;
-       <div style="float: right;width: 600px"> <input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Para  la identificación y  comunicación de los riesgos y peligros  de una sustancia química.
-       </div>
+       <div style="float: right;width: 600px"> <input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Para  la identificación y  comunicación de los riesgos y peligros  de una sustancia química.</div>
 
 
 
@@ -157,13 +155,12 @@ por consecuencia  termina en un accidente. </div>
     <div style="margin-left:50px; font-family: play-Bold;">
     
         <div style="float:left; width:500px " ><input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Gráfico que contiene un símbolo en el interior de un rombo con un borde rojo o negro, un color blanco de fondo, y que sirve para comunicar informaciones específicas de peligro de una sustancia o mezcla.
-        </div>
+ </div>
 
  
 
  &nbsp;&nbsp;&nbsp;
-        <div style="float: right;width: 600px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B)  Es un  rombo de seguridad que utiliza 4 colores amarillo, azul, rojo y blanco y en cada uno de ellos enumera los riesgos de la sustancia química , dependiendo el color es el riesgo al que se especifica.
-        </div>
+        <div style="float: right;width: 600px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B)  Es un  rombo de seguridad que utiliza 4 colores amarillo, azul, rojo y blanco y en cada uno de ellos enumera los riesgos de la sustancia química , dependiendo el color es el riesgo al que se especifica.</div>
 
 
 <br><br><br><br><br><br>

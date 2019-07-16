@@ -1,6 +1,6 @@
 <?php
     include ("conexion.php");
-    $sql = "SELECT * FROM Empresas";
+    $sql = "SELECT * FROM empresas";
     $res = mysqli_query($con, $sql);
 ?>
 <html>
