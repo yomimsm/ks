@@ -41,24 +41,26 @@
 </head>
 <body>
 <?php
-        session_start();
-        // Se comprueba si ya se habia iniciado la sesion.
-        if (isset($_SESSION['id'])) {
-            //echo 'Sesion iniciada correctamente.<br />';
-            //echo 'Usuario: '.$_SESSION['id'].'<br />';
-            //echo 'Password: '.$_SESSION['password'].'<br />';
-        } else {
-            header("Location:login_registro.php");
-        }
-        include ("conexion.php");
-        $query="SELECT id,company FROM Empresas WHERE clave = {$_SESSION['password']}";
-        $res = mysqli_query($con, $query);
-        while($rows=mysqli_fetch_array($res)){ 
-            //echo "id: ".$rows[0]."<br>";
-            $id = $rows[0];
-            $company = $rows[1];
-        } 
-        ?>
+    session_start();
+    //var_dump($_SESSION['id']);
+    //var_dump($_SESSION['clave']);
+    //Se comprueba si ya se habia iniciado la sesion.
+    if (isset($_SESSION['id'])) {
+        //echo 'Sesion iniciada correctamente.<br />';
+        //echo 'Usuario: '.$_SESSION['id'].'<br />';
+        //echo 'Password: '.$_SESSION['clave'].'<br />';
+    }else{
+        header("Location:login_registro.php");
+    }
+    include ("conexion.php");
+    $query="SELECT id,company FROM Empresas WHERE clave = {$_SESSION['clave']}";
+    $res = mysqli_query($con, $query);
+    while($rows=mysqli_fetch_array($res)){ 
+        //echo "id: ".$rows[0]."<br>";
+        $id = $rows[0];
+        $company = $rows[1];
+    } 
+?>
     <br>
     <br>
     <br>
@@ -69,6 +71,7 @@
         <label for="">NOMBRE DEL TRABAJADOR:&nbsp;&nbsp;&nbsp; </label>
         <input type="text" name="nombre" id="nombre" style="width:300px" required>
         <input type="hidden" name="empresa" id="empresa" value="<?php echo $id?>">
+        <input type="hidden" name="clave" id="clave" value="<?php echo $_SESSION['clave']?>">
     </div>
     <br>
      <div style="margin-left:50px; font-family: play-Bold;color:#fff">

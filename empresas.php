@@ -1,8 +1,3 @@
-<?php
-    include ("conexion.php");
-    $sql = "SELECT * FROM empresas";
-    $res = mysqli_query($con, $sql);
-?>
 <html>
 <head>
     <title>Prueba</title>
