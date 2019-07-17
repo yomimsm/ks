@@ -1,7 +1,7 @@
 <?php
-    $host = "127.0.0.1";
-    $name = 'prueba';
+    $host = "127.0.0.1:8889";
+    $name = 'Prueba';
     $user = "root";
-    $pass = "";
+    $pass = "root";
     $con = mysqli_connect($host, $user, $pass, $name);    
 ?>

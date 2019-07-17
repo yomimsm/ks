@@ -83,6 +83,7 @@
         header("Location:login_trabajador.php");
     }
 ?>
+<h3 style="text-align:center;font-family:Play-Bold;margin-left:100px;margin-right:100px;color:white;margin-top:20px">Bienvenido <?php echo $_SESSION['nombre']?>, por favor lee con atención las siguientes diapositivas. Al terminar realiza la evaluación correspondiente.</h3>
     <div class="main">
 		<div class="slides">
 			<img src="images/presentacion/Diapositiva01.jpg" alt="">
@@ -115,6 +116,9 @@
             <img src="images/presentacion/Diapositiva28.jpg" alt="">
         </div>
     </div>
+<div style="margin-left:850px;margin-top:-70px">
+    <a href="examen.php" target="principal" type="button" style="font-family: play-Bold; width: 100px; font-size: 16px">Realizar evaluación</a>
+</div>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.slides.js"></script>
 <script>
