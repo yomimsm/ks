@@ -4,13 +4,14 @@
    
     <style>
     @font-face {
-font-family:"Play-Bold";
-src: url("fonts/Play-Bold.ttf");
-                }
+        font-family:"Play-Bold";
+        src: url("fonts/Play-Bold.ttf");
+    }
    
    </style>
 </head>
 <body>
+    <form action="evaluacion.php" method="POST">
 	<img src="img/ks.png" alt=""> <img src="img/sg.png" alt="" style="float: right;"> 
 	<h2 style="font-family: play-bold; text-align: center;">SISTEMAS DE ARNESES  K&S MEXICANA S.A. DE C.V.</h2>
 	<h2 style="font-family: play-bold; text-align: center;">DEPARTAMENTO DE SEGURIDAD E HIGIENE Y MEDIO AMBIENTE</h2>
@@ -196,52 +197,5 @@ por consecuencia  termina en un accidente. </div>
     <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Guardar</button>
     </div>
     </form>
-    <br>
-    <br>
-    <div>
-    <h3>Empresas Registradas</h3>
-    <?php if ($res) {   ?>
-    <table>
-    <thead>
-        <tr>Nombre </tr>
-        <tr>Procedencia </tr>
-        <tr>Tipo </tr>
-        <tr>Actividades </tr>
-        <tr>Razón Social </tr>
-        <tr>Contacto </tr>
-    </thead>
-        <tbody>
-        <?php
-            $p = "";
-            $t = "";
-			while ($f=mysqli_fetch_array($res)) {
-                    if($f['procedencia'] == 1){
-                        $p = "Fisica";
-                    }
-                    if($f['procedencia'] == 2){
-                        $p = "Moral";
-                    }
-                    if($f['tipo'] == 1){
-                        $t = "Mexicana";
-                    }
-                    if($f['tipo'] == 2){
-                        $t = "Extranjera";
-                    }?>
-			<tr>
-            <td><?php echo $f['company'];?></td>
-			<td><?php echo $p;?></td>
-			<td><?php echo $t;?></td>
-            <td><?php echo $f['actividades'];?></td>
-            <td><?php echo $f['razon_social'];?>'</td>
-            <td><?php echo $f['contacto'];?>'</td>
-		    </tr>
-			<?php }?>
-            </tbody>
-    </table>
-    <?php   } else{?>
-   <p>No hay empresas registradas</p>
-   <?php } ?>
-   <hr>
-    </div>
 </body>
 </html>
