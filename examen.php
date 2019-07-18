@@ -3,122 +3,181 @@
     <title>Examen</title>
    
     <style>
-    @font-face {
-font-family:"Play-Bold";
-src: url("fonts/Play-Bold.ttf");
-                }
-   
-   </style>
+        @font-face {
+            font-family:"Play-Bold";
+            src: url("fonts/Play-Bold.ttf");
+        }
+        body{
+            background-color:#336699;
+        }
+    </style>
+    
 </head>
+<?php
+    session_start();
+    include ("conexion.php");
+    //var_dump($_SESSION['id']);
+    //var_dump($_SESSION['clave']);
+    //var_dump($_SESSION['nombre']);
+    //var_dump($_SESSION['employee']);
+    if (isset($_SESSION['id'])) {
+        //echo 'Sesion iniciada correctamente.<br />';
+        //echo 'Usuario: '.$_SESSION['id'].'<br />';
+        //echo 'Password: '.$_SESSION['password'].'<br />';
+    }else {
+        header("Location:login_trabajador.php");
+    }
+    include ("conexion.php");
+    $consulta = "SELECT id, id_empleado, intentos, resultado, bloqueo FROM Evaluaciones WHERE id_empleado = {$_SESSION['employee']}";
+        $res = mysqli_query($con, $consulta);
+        while($rows=mysqli_fetch_array($res)){ 
+            //echo "bloqueo: ".$rows[4]."<br>";
+            $id = $rows[0];
+            $id_empleado = $rows[1];
+            $intentos = $rows[2];
+            $resultado = $rows[3];
+            $bloqueo = $rows[4];
+        }
+        if($id == null){
+            echo '<script>alert ("Esta a punto de realizar la evaluación; recuerde que si no la aprueba solo tendrá un intento extra");
+                        
+                    </script>'; 
+        }else{
+            if($intentos == 1){
+                echo '<script>alert ("Usted ya ha aprobado este examen");
+                        window.location.href="login_trabajador.php";
+                    </script>';
+            }if($intentos == 2){
+                $fecha = date('Y-m-j');
+                if($fecha == $bloqueo){
+                    echo '<script>alert ("Esta a punto de realizar de nuevo la evaluación; por favor lea detenidamente las preguntas que se le presentan");
+                        window.location.href="examen_extra.php";
+                    </script>'; 
+                }else{
+                    echo '<script>alert ("Aun no puede volver a realizar esta evaluación o su segunda oportunidad ha caducado");
+                        window.location.href="login_trabajador.php";
+                    </script>'; 
+                }
+            }else{
+                echo '<script>alert ("Ya no puede realizar la evaluación correspondiente");
+                        window.location.href="login_trabajador.php";
+                    </script>';
+            }
+        }
+?>
 <body>
+    <form action="evaluacion.php" method="POST">
+    <input type="hidden" name="clave" id="clave" value="<?php echo $_SESSION['clave']?>">
+    <input type="hidden" name="nombre" id="nombre" value="<?php echo $_SESSION['nombre']?>">
+    <input type="hidden" name="employee" id="employee" value="<?php echo $_SESSION['employee']?>">
 	<img src="img/ks.png" alt=""> <img src="img/sg.png" alt="" style="float: right;"> 
-	<h2 style="font-family: play-bold; text-align: center;">SISTEMAS DE ARNESES  K&S MEXICANA S.A. DE C.V.</h2>
-	<h2 style="font-family: play-bold; text-align: center;">DEPARTAMENTO DE SEGURIDAD E HIGIENE Y MEDIO AMBIENTE</h2>
-	<h3 style="font-family: play-bold; text-align: center;">EXAMEN DE CURSO DE CONCIENTIZACIÓN EN MEDIO AMBIENTE Y SEGURIDAD PARA PROVEEDORES Y CONTRATISTAS </h3>
+	<h2 style="font-family: play-bold; text-align: center;color:white;">SISTEMAS DE ARNESES  K&S MEXICANA S.A. DE C.V.</h2>
+	<h2 style="font-family: play-bold; text-align: center;color:white;">DEPARTAMENTO DE SEGURIDAD E HIGIENE Y MEDIO AMBIENTE</h2>
+	<h3 style="font-family: play-bold; text-align: center;color:white;">EXAMEN DE CURSO DE CONCIENTIZACIÓN EN MEDIO AMBIENTE Y SEGURIDAD PARA PROVEEDORES Y CONTRATISTAS </h3>
 
 	<br><br><br><br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">   INSTRUCCIONES: LEE CON ATENCIÓN LAS SIGUIENTES PREGUNTAS Y RESPONDE O  ENCIERRA LA RESPUESTA CORRECTA SEGÚN CORRESPONDA.</h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">   INSTRUCCIONES: LEE CON ATENCIÓN LAS SIGUIENTES PREGUNTAS Y RESPONDE O  ENCIERRA LA RESPUESTA CORRECTA SEGÚN CORRESPONDA.</h3>
     <br>
-     <h3 style="margin-left:50px; font-family: play-Bold;">       1.- ¿QUÉ  ES UNA CONDICIÓN INSEGURA?</h3>
+     <h3 style="margin-left:50px; font-family: play-Bold;color:white;">       1.- ¿QUÉ  ES UNA CONDICIÓN INSEGURA?</h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
-    	<div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1"> A) Son las instalaciones, equipos de trabajo, maquinaria y herramientas que NO están en condiciones  de  ser utilizadas para realizar el trabajo. </div>
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
+    	<div style="float:left; width:500px;color:white; " > <input type="checkbox" name="correcta" id="correcta" value = "1"> A) Son las instalaciones, equipos de trabajo, maquinaria y herramientas que NO están en condiciones  de  ser utilizadas para realizar el trabajo. </div>
     
        
 
- <div style="float: right;width: 400px">  <input type="checkbox" name="extranjera" id="extranjera" value = "2"> B) Son aquellas  que se presentan cuando una persona daña la maquinaria y equipo.</div>
+ <div style="float: right;width: 400px;color:white;">  <input type="checkbox" name="incorrecta" id="incorrecta" value = "2"> B) Son aquellas  que se presentan cuando una persona daña la maquinaria y equipo.</div>
        
 
     </div>
     <br><br><br><br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">       2.- ¿QUÉ ES UN ACTO INSEGURO?</h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">       2.- ¿QUÉ ES UN ACTO INSEGURO?</h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Son las fallas, olvidos, errores  u omisiones que hace el trabajador y que 
+       <div style="float:left; width:500px " > <input type="checkbox" name="correcta1" id="correcta1" value = "1">A) Son las fallas, olvidos, errores  u omisiones que hace el trabajador y que 
 por consecuencia  termina en un accidente. </div>
 
  &nbsp;&nbsp;&nbsp;
-       <div style="float: right;width: 400px"> <input type="checkbox" name="extranjera" id="extranjera" value = "2"> B) Sucede cuando el personal no quiere realizar su trabajo</div>
+       <div style="float: right;width: 400px"> <input type="checkbox" name="incorrecta1" id="incorrecta1" value = "2"> B) Sucede cuando el personal no quiere realizar su trabajo</div>
 
 
     </div>
     <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">      3.-¿QUÉ ES UN RIESGO LABORAL?</h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">      3.-¿QUÉ ES UN RIESGO LABORAL?</h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-      <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Es aquel que te acurre por cuestiones personales  </div>
+      <div style="float:left; width:500px " > <input type="checkbox" name="incorrecta2" id="incorrecta2" value = "1">A) Es aquel que te acurre por cuestiones personales  </div>
 
  &nbsp;&nbsp;&nbsp;
-        <div style="float: right;width: 400px"><input type="checkbox" name="extranjera" id="extranjera" value = "2"> B) Es aquel que  sucede a  consecuencias del trabajo que estas  realizando</div>
+        <div style="float: right;width: 400px"><input type="checkbox" name="correcta2" id="correcta2" value = "2"> B) Es aquel que  sucede a  consecuencias del trabajo que estas  realizando</div>
 
 
 
     </div>
       <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">      4.-¿MENCIONA 5 REGLAS DE SEGURIDAD DE LA COMPAÑÍA? </h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">      4.-¿MENCIONA 5 REGLAS DE SEGURIDAD DE LA COMPAÑÍA? </h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-       <textarea name="actividades" id="activadades" cols="67" rows="5"style="resize: both;"></textarea>
+       <textarea name="prohibido" id="prohibido" cols="67" rows="5"style="resize: both;"></textarea>
 
 
 
 
     </div>
      <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">       5.-MENCIONA 3 REGLAS A SEGUIR EN CASO DE UNA EMERGENCIA? </h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">       5.-MENCIONA 3 REGLAS A SEGUIR EN CASO DE UNA EMERGENCIA? </h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-       <textarea name="actividades" id="activadades" cols="67" rows="5"style="resize: both;"></textarea>
+       <textarea name="emergencia" id="emergencia" cols="67" rows="5"style="resize: both;"></textarea>
 
 
 
 
     </div>
     <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">      6.- ¿A QUÉ SE COMPROMETE LA EMPRESA AL CERTIFICARSE EN LA NORMA ISO 14001-2015 ? </h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">      6.- ¿A QUÉ SE COMPROMETE LA EMPRESA AL CERTIFICARSE EN LA NORMA ISO 14001-2015 ? </h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Al cuidado del medio ambiente. </div>
+       <div style="float:left; width:500px " > <input type="checkbox" name="correcta3" id="correcta3" value = "1">A) Al cuidado del medio ambiente. </div>
  
 
  &nbsp;&nbsp;&nbsp;
-       <div style="float: right;width: 400px"> <input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Al cuidado del agua y luz.</div>
+       <div style="float: right;width: 400px"> <input type="checkbox" name="incorrecta3" id="incorrecta3" value = "2">B) Al cuidado del agua y luz.</div>
 
 
 
 
     </div>
     <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">       7.- ¿PORQUE ES IMPORTANTE LA INFLUENCIA DE LOS PROVEEDORES Y CONTRATISTAS EN EL SGA DE LA EMPRESA?  </h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">       7.- ¿PORQUE ES IMPORTANTE LA INFLUENCIA DE LOS PROVEEDORES Y CONTRATISTAS EN EL SGA DE LA EMPRESA?  </h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Porque de forma voluntaria  deben cuidar el medio ambiente. 
+       <div style="float:left; width:500px " > <input type="checkbox" name="incorrecta4" id="incorrecta4" value = "1">A) Porque de forma voluntaria  deben cuidar el medio ambiente. 
        </div>
 
  
 
  &nbsp;&nbsp;&nbsp;
-        <div style="float: right;width: 400px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Por los impactos ambientales que pueden generar a causas de sus actividades.
+        <div style="float: right;width: 400px"><input type="checkbox" name="correcta4" id="correcta4" value = "2">B) Por los impactos ambientales que pueden generar a causas de sus actividades.
         </div>
 
 
@@ -127,20 +186,20 @@ por consecuencia  termina en un accidente. </div>
 
     </div>
     <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">           8.- ¿PARA QUÉ NOS SIRVE EL SISTEMA GLOBAL ARMONIZADO GHS?  </h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">           8.- ¿PARA QUÉ NOS SIRVE EL SISTEMA GLOBAL ARMONIZADO GHS?  </h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;color:white;">
     
-       <div style="float:left; width:500px " > <input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Para conocer en que más se puede utilizar esa sustancia química.
+       <div style="float:left; width:500px " > <input type="checkbox" name="incorrecta5" id="incorrecta5" value = "1">A) Para conocer en que más se puede utilizar esa sustancia química.
        </div>
 
 
  
 
  &nbsp;&nbsp;&nbsp;
-       <div style="float: right;width: 400px"> <input type="checkbox" name="extranjera" id="extranjera" value = "2">B) Para  la identificación y  comunicación de los riesgos y peligros  de una sustancia química.
+       <div style="float: right;width: 400px"> <input type="checkbox" name="correcta5" id="correcta5" value = "2">B) Para  la identificación y  comunicación de los riesgos y peligros  de una sustancia química.
        </div>
 
 
@@ -150,36 +209,36 @@ por consecuencia  termina en un accidente. </div>
 
     </div>
     <br>
-    <h3 style="margin-left:50px; font-family: play-Bold;">              9.- ¿QUÉ ES UN PICTOGRAMA?   </h3>
+    <h3 style="margin-left:50px; font-family: play-Bold;color:white;">              9.- ¿QUÉ ES UN PICTOGRAMA?   </h3>
      <br>
 
   
-    <div style="margin-left:50px; font-family: play-Bold;">
+    <div style="margin-left:50px; font-family: play-Bold;color:white;">
     
-        <div style="float:left; width:500px " ><input type="checkbox" name="mexicana" id="mexicana" value = "1">A) Gráfico que contiene un símbolo en el interior de un rombo con un borde rojo o negro, un color blanco de fondo, y que sirve para comunicar informaciones específicas de peligro de una sustancia o mezcla.
+        <div style="float:left; width:500px " ><input type="checkbox" name="correcta6" id="correcta6" value = "1">A) Gráfico que contiene un símbolo en el interior de un rombo con un borde rojo o negro, un color blanco de fondo, y que sirve para comunicar informaciones específicas de peligro de una sustancia o mezcla.
         </div>
 
  
 
  &nbsp;&nbsp;&nbsp;
-        <div style="float: right;width: 400px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B)  Es un  rombo de seguridad que utiliza 4 colores amarillo, azul, rojo y blanco y en cada uno de ellos enumera los riesgos de la sustancia química, dependiendo el color es el riesgo al que se especifica.
+        <div style="float: right;width: 400px"><input type="checkbox" name="incorrecta6" id="incorrecta6" value = "2">B)  Es un  rombo de seguridad que utiliza 4 colores amarillo, azul, rojo y blanco y en cada uno de ellos enumera los riesgos de la sustancia química, dependiendo el color es el riesgo al que se especifica.
         </div>
 
 
 <br><br><br><br><br><br>
-    <h3 style="margin-left:0px; font-family: play-Bold;">              10.- ¿DE LAS SIGUIENTES IMÁGENES ENCIERRA EL INCISO QUE CORRESPONDE A LA CORRECTA IDENTIFICACIÓN SEGÚN EL SISTEMA GHS? </h3>
+    <h3 style="margin-left:0px; font-family: play-Bold;color:white;">              10.- ¿DE LAS SIGUIENTES IMÁGENES ENCIERRA EL INCISO QUE CORRESPONDE A LA CORRECTA IDENTIFICACIÓN SEGÚN EL SISTEMA GHS? </h3>
      <br>
 
   
-    <div style="margin-left:0px; font-family: play-Bold;">
+    <div style="margin-left:0px; font-family: play-Bold;color:white;">
     
-        <div style="float:left; width:500px " ><input type="checkbox" name="mexicana" id="mexicana" value = "1">A) <br><br><img src="img/autotipo.png" alt="" style="width: 80%;"><img src="img/manos1.png" alt="">
+        <div style="float:left; width:500px " ><input type="checkbox" name="incorrecta7" id="incorrecta7" value = "1">A) <br><br><img src="img/autotipo.png" alt="" style="width: 80%;"><img src="img/manos1.png" alt="">
  </div>
 
  
 
  &nbsp;&nbsp;&nbsp;
-        <div style="float: right; width: 400px"><input type="checkbox" name="extranjera" id="extranjera" value = "2">B) <br><br><img src="img/cloro.png" alt="" style="width: 100%;"><img src="img/mono2.png" alt=""></div>
+        <div style="float: right; width: 400px"><input type="checkbox" name="correcta7" id="correcta7" value = "2">B) <br><br><img src="img/cloro.png" alt="" style="width: 100%;"><img src="img/mono2.png" alt=""></div>
 
 
 
@@ -193,55 +252,8 @@ por consecuencia  termina en un accidente. </div>
     <br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br>
     <div style="margin-left: 500px; ">
-    <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Guardar</button>
+    <button type="submit" style="font-family: play-Bold; width: 100px; font-size: 16px">Enviar Respuestas</button>
     </div>
     </form>
-    <br>
-    <br>
-    <div>
-    <h3>Empresas Registradas</h3>
-    <?php if ($res) {   ?>
-    <table>
-    <thead>
-        <tr>Nombre </tr>
-        <tr>Procedencia </tr>
-        <tr>Tipo </tr>
-        <tr>Actividades </tr>
-        <tr>Razón Social </tr>
-        <tr>Contacto </tr>
-    </thead>
-        <tbody>
-        <?php
-            $p = "";
-            $t = "";
-			while ($f=mysqli_fetch_array($res)) {
-                    if($f['procedencia'] == 1){
-                        $p = "Fisica";
-                    }
-                    if($f['procedencia'] == 2){
-                        $p = "Moral";
-                    }
-                    if($f['tipo'] == 1){
-                        $t = "Mexicana";
-                    }
-                    if($f['tipo'] == 2){
-                        $t = "Extranjera";
-                    }?>
-			<tr>
-            <td><?php echo $f['company'];?></td>
-			<td><?php echo $p;?></td>
-			<td><?php echo $t;?></td>
-            <td><?php echo $f['actividades'];?></td>
-            <td><?php echo $f['razon_social'];?>'</td>
-            <td><?php echo $f['contacto'];?>'</td>
-		    </tr>
-			<?php }?>
-            </tbody>
-    </table>
-    <?php   } else{?>
-   <p>No hay empresas registradas</p>
-   <?php } ?>
-   <hr>
-    </div>
 </body>
 </html>

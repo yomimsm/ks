@@ -18,11 +18,7 @@
         if(isset($_POST['extranjera'])){
             $tipo= $_POST['extranjera'];
         }
-<<<<<<< Updated upstream
         $Sql="insert into Empresas (company,procedencia,tipo,actividades,razon_social,contacto,telefono,clave) values(
-=======
-        $Sql="insert into empresas (company,procedencia,tipo,actividades,razon_social,contacto,clave) values(
->>>>>>> Stashed changes
 			'".$usuario."',
             '".$procedencia."',
             '".$tipo."',
