@@ -119,11 +119,7 @@
         $resultado = "Aprobado";
         $bloqueo = "";
 
-        $Sql="insert into Evaluaciones (id_empleado,intentos,resultado,bloqueo) values(
-			'".$id_empleado."',
-            '".$intento."',
-            '".$resultado."',
-            '".$bloqueo."')";
+        $Sql = "UPDATE Evaluaciones SET id_empleado = '{$id_empleado}', intentos = '{$intento}', resultado = '{$resultado}',bloqueo = '{$bloqueo}' WHERE id_empleado = '{$id_empleado}'";
             
         mysqli_query($con,$Sql);
     }else{
@@ -132,11 +128,8 @@
         //$fecha = date('Y-m-j');
        //$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
         $bloqueo =" ";
-        $Sql="insert into Evaluaciones (id_empleado,intentos,resultado,bloqueo) values(
-			'".$id_empleado."',
-            '".$intento."',
-            '".$resultado."',
-            '".$bloqueo."')";
+        $Sql = "UPDATE Evaluaciones SET id_empleado = '{$id_empleado}', intentos = '{$intento}', resultado = '{$resultado}',bloqueo = '{$bloqueo}' WHERE id_empleado = '{$id_empleado}'";
+
             
         mysqli_query($con,$Sql);
     }
