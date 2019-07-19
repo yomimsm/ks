@@ -126,7 +126,7 @@
         $intento = 3;
         $resultado = "Reprobado";
         //$fecha = date('Y-m-j');
-       //$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
+        //$nuevafecha = strtotime ( '+1 day' , strtotime ( $fecha ) ) ;
         $bloqueo =" ";
         $Sql = "UPDATE Evaluaciones SET id_empleado = '{$id_empleado}', intentos = '{$intento}', resultado = '{$resultado}',bloqueo = '{$bloqueo}' WHERE id_empleado = '{$id_empleado}'";
 
